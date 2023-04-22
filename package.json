@@ -1,13 +1,16 @@
 {
-  "name": "learn-wp",
+  "name": "virtual-keyboard",
   "version": "0.0.1",
   "description": "",
+  "homepage": "https://github.com/aleksem07/virtual-keyboard",
   "main": "index.js",
   "scripts": {
     "start": "webpack serve",
     "build-dev": "webpack",
     "build-prod": "webpack --node-env=production",
-    "clear": "rd /s /q dist"
+    "clear": "rd /s /q dist",
+    "predeploy": "npm run build-prod",
+    "deploy": "gh-pages -d dist"
   },
   "keywords": [],
   "author": "",
