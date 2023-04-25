@@ -5,6 +5,8 @@
   border-radius: 4px;
   text-align: center;
   box-shadow: -2px -2px 4px 0 $color-keyboard-button;
+  border: 2px solid $color-dark;
+  cursor: pointer;
 
   &:hover {
     background-color: tomato;
@@ -12,12 +14,19 @@
 
   &:active {
     box-shadow: none;
-    box-shadow: inset -1px -1px 5px 0 $color-keyboard-button;
+    box-shadow: inset 3px 3px 5px 0 $color-keyboard-button;
+  }
+}
+
+@media (max-width: 768px) {
+  .button {
+    font-size: 1.4rem;
   }
 }
 
 .big {
   grid-column: span 2;
+  overflow-wrap: anywhere;
 }
 
 .super-big {
@@ -33,7 +42,7 @@
 .button-second {
   padding-top: 1px;
   padding-left: 5px;
-  font-size: 1.2rem;
+  font-size: 0.8rem;
   grid-row: 1 / 2;
   grid-column: 1 / 2;
   justify-self: start;

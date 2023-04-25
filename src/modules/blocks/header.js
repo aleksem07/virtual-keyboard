@@ -1,5 +1,3 @@
-console.log("header \n sda");
-
 const body = document.querySelector(".page__body");
 
 const header = document.createElement("header");
@@ -12,7 +10,7 @@ h1.textContent = "Virtual keyboard";
 const projectDesc = document.createElement("p");
 projectDesc.className = "header__desc";
 projectDesc.innerHTML =
-  "Клавиатура создана в ОС Линукс \n переключение раскладки клавишей CAPS";
+  "Клавиатура создана в ОС Линукс,  \n переключение раскладки сочетанием ShiftLeft + ControlLeft";
 
 const createHeader = () => {
   body.appendChild(header);

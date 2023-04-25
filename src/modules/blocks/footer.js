@@ -1,5 +1,3 @@
-console.log("footer");
-
 const body = document.querySelector(".page__body");
 
 const footer = document.createElement("footer");
@@ -8,10 +6,10 @@ footer.className = "footer";
 const p = document.createElement("p");
 
 const githubText = p.cloneNode(true);
-githubText.innerHTML = "&#xa9; aleksem07";
+githubText.innerHTML = "aleksem07";
 
 const rsschoolText = p.cloneNode(true);
-rsschoolText.innerHTML = "RS School";
+rsschoolText.innerHTML = "RS School 2023";
 
 const link = document.createElement("a");
 
