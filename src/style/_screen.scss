@@ -44,17 +44,34 @@
   resize: none;
   border-radius: 10px;
   background-color: $color-screen;
+  outline: none;
 }
 
 .screen__lang-led {
-  text-align: left;
-  min-width: 22.5px;
   padding: 15px;
+  min-width: 55px;
+  width: max-content;
   background-color: $color-back;
+  text-align: left;
+  font-weight: 600;
 }
 
-.clear {
+.clean {
   padding: 10px;
   grid-template-rows: 1fr;
   background-color: $color-keyboard-button;
+}
+
+.off {
+  color: grey;
+}
+
+.active {
+  background-color: rgb(212, 97, 76);
+  color: white;
+}
+
+.voice,
+.sound {
+  cursor: not-allowed;
 }

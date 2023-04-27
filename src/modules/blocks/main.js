@@ -5,6 +5,9 @@ main.className = "main";
 const div = document.createElement("div");
 const button = document.createElement("button");
 const ul = document.createElement("ul");
+const audio = document.createElement("audio");
+audio.id = "sound";
+audio.src = "assets/button-press.mp3";
 
 //create display
 const screen = div.cloneNode(true);
@@ -22,25 +25,27 @@ const currentLanguageLed = button.cloneNode(true);
 currentLanguageLed.textContent = "En";
 currentLanguageLed.className = "screen__lang-led add-led";
 
-//create clear
-const clear = button.cloneNode(true);
-clear.textContent = "clear(ESC)";
-clear.className = "clear add-led";
+//create clean
+const clean = button.cloneNode(true);
+clean.textContent = "cleaner(ESC)";
+clean.className = "clean add-led";
 
 // create sound
 const sound = button.cloneNode(true);
 sound.textContent = "sound Off";
-sound.className = "add-led";
+sound.className = "add-led sound off";
+sound.disabled = "true";
 
 // create voice
 const voice = button.cloneNode(true);
 voice.textContent = "voice Off";
-voice.className = "add-led";
+voice.className = "add-led voice off";
+voice.disabled = "true";
 
 //hide keyboard
 const keyboardHide = button.cloneNode(true);
 keyboardHide.textContent = "hide keyb Off";
-keyboardHide.className = "add-led";
+keyboardHide.className = "add-led keyb off";
 
 //create keyboard
 const keyboard = ul.cloneNode(true);
@@ -53,11 +58,12 @@ const createMain = () => {
   screen.appendChild(cursor);
   screen.appendChild(addLedPanel);
   addLedPanel.appendChild(currentLanguageLed);
-  addLedPanel.appendChild(clear);
+  addLedPanel.appendChild(clean);
   addLedPanel.appendChild(sound);
   addLedPanel.appendChild(voice);
   addLedPanel.appendChild(keyboardHide);
   main.appendChild(keyboard);
+  main.appendChild(audio);
 };
 
 createMain();

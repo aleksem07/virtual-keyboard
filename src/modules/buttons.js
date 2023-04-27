@@ -1,4 +1,5 @@
 import { buttonsEn, buttonsRu } from "./data/buttons-data.js";
+import { iconKeybSwitch } from "./icons.js";
 
 const keyboard = document.querySelector(".keyboard");
 
@@ -14,9 +15,11 @@ const createButtons = (buttonsData) => {
     spanName.className = "button-first";
 
     li.className = `button ${button.size}`;
+    li.dataset.code = `${button.id}`;
     keyboard.appendChild(li);
     li.appendChild(spanAdd);
     li.appendChild(spanName);
+    iconKeybSwitch();
   }
 };
 

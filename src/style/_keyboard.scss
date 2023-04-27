@@ -20,4 +20,6 @@
     inset -5px -7px 20px -7px $color-screen--shadow-inset;
 
   color: $color-light;
+  overflow: hidden;
+  transition: all 0.25s ease-in;
 }
