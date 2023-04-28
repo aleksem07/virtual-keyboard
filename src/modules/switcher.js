@@ -1,6 +1,7 @@
 import { buttonsEn, buttonsRu } from "./data/buttons-data.js";
 import { iconKeybSwitch } from "./icons.js";
 import { createElements } from "./blocks/main.js";
+import { clickPrint } from "./print.js";
 const keyboard = document.querySelector(".keyboard");
 
 const langLed = document.querySelector(".screen__lang-led");
@@ -12,16 +13,18 @@ const switchLangLed = () => {
     langLed.textContent = "En";
   }
 };
-
+clickPrint();
 const switchButtons = (evt) => {
   switchLangLed(evt);
   if (langLed.textContent == "En") {
     keyboard.innerHTML = "";
     createElements.buttons(buttonsEn);
+    clickPrint();
     iconKeybSwitch();
   } else if (langLed.textContent == "Ru") {
     keyboard.innerHTML = "";
     createElements.buttons(buttonsRu);
+    clickPrint();
     iconKeybSwitch();
   }
 };

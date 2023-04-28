@@ -96,6 +96,8 @@ const createElements = {
 
 createElements.init();
 createElements.buttons(buttonsEn);
+createElements.elements.screen.focus();
+
 iconKeybSwitch();
 
 export { createElements };

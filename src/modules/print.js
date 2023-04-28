@@ -1,36 +1,40 @@
 const display = document.querySelector(".screen__cursor");
 const cleanLed = document.querySelector(".clean");
-const keyboard = document.querySelector(".keyboard");
+let keyboard = document.querySelector(".keyboard");
 let buttons = keyboard.children;
-
 display.focus();
 
-for (let button of buttons) {
-  button.onclick = function () {
-    display.focus();
-    const buttonFirst = button.querySelector(".button-first");
+let clickPrint = () => {
+  let keyboard = document.querySelector(".keyboard");
+  let buttons = keyboard.children;
+  for (let button of buttons) {
+    button.onclick = function () {
+      display.focus();
+      const buttonFirst = button.querySelector(".button-first");
 
-    let char = buttonFirst.textContent;
-    let displayText = display.value;
+      let char = buttonFirst.textContent;
+      let displayText = display.value;
 
-    if (char.length < 2) {
-      displayText = displayText + char;
-      char = buttonFirst.textContent;
-      display.value = displayText;
-    }
+      if (char.length < 2) {
+        displayText = displayText + char;
+        char = buttonFirst.textContent;
+        display.value = displayText;
+      }
 
-    if (button.classList.contains("super-big")) {
-      char = " ";
-      displayText = displayText + char;
-      display.value = displayText;
-    }
-    if (button.dataset.code === "Enter") {
-      char = "\n";
-      displayText = displayText + char;
-      display.value = displayText;
-    }
-  };
-}
+      if (button.classList.contains("super-big")) {
+        char = " ";
+        displayText = displayText + char;
+        display.value = displayText;
+      }
+      if (button.dataset.code === "Enter") {
+        char = "\n";
+        displayText = displayText + char;
+        display.value = displayText;
+      }
+    };
+  }
+};
+
 cleanLed.addEventListener("click", () => {
   display.value = "";
 });
@@ -78,3 +82,5 @@ document.addEventListener("keyup", (evt) => {
     }
   }
 });
+
+export { clickPrint };
