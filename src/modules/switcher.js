@@ -1,29 +1,7 @@
 import { buttonsEn, buttonsRu } from "./data/buttons-data.js";
 import { iconKeybSwitch } from "./icons.js";
-
+import { createElements } from "./blocks/main.js";
 const keyboard = document.querySelector(".keyboard");
-
-const createButtons = (buttonsData) => {
-  for (let button of buttonsData) {
-    const li = document.createElement("li");
-    const span = document.createElement("span");
-    const spanAdd = span.cloneNode(true);
-    const spanName = span.cloneNode(true);
-    spanAdd.textContent = button.add;
-    spanName.textContent = button.key;
-    spanAdd.className = "button-second";
-    spanName.className = "button-first";
-
-    li.className = `button ${button.size}`;
-    li.dataset.code = `${button.id}`;
-    keyboard.appendChild(li);
-    li.appendChild(spanAdd);
-    li.appendChild(spanName);
-    iconKeybSwitch();
-  }
-};
-
-createButtons(buttonsEn);
 
 const langLed = document.querySelector(".screen__lang-led");
 
@@ -39,10 +17,12 @@ const switchButtons = (evt) => {
   switchLangLed(evt);
   if (langLed.textContent == "En") {
     keyboard.innerHTML = "";
-    createButtons(buttonsEn);
+    createElements.buttons(buttonsEn);
+    iconKeybSwitch();
   } else if (langLed.textContent == "Ru") {
     keyboard.innerHTML = "";
-    createButtons(buttonsRu);
+    createElements.buttons(buttonsRu);
+    iconKeybSwitch();
   }
 };
 

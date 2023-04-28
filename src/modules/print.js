@@ -1,5 +1,3 @@
-import { soundOn } from "./sound";
-
 const display = document.querySelector(".screen__cursor");
 const cleanLed = document.querySelector(".clean");
 const keyboard = document.querySelector(".keyboard");
@@ -11,7 +9,7 @@ for (let button of buttons) {
   button.onclick = function () {
     display.focus();
     const buttonFirst = button.querySelector(".button-first");
-    soundOn();
+
     let char = buttonFirst.textContent;
     let displayText = display.value;
 
@@ -39,8 +37,6 @@ cleanLed.addEventListener("click", () => {
 
 //print with keyb
 document.addEventListener("keydown", (evt) => {
-  soundOn();
-  console.log(evt);
   let char = evt.key;
   let displayText = display.value;
 

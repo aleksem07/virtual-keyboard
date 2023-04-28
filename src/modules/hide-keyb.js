@@ -15,5 +15,3 @@ hideKeybButton.addEventListener("click", () => {
     keyboard.style.padding = "10px";
   }
 });
-
-console.log(location.href);
