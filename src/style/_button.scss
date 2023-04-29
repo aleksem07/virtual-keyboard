@@ -7,6 +7,7 @@
   box-shadow: -2px -2px 4px 0 $color-keyboard-button;
   border: 2px solid $color-dark;
   cursor: pointer;
+  transition: all 0.1s ease-in;
 
   &:hover {
     background-color: tomato;

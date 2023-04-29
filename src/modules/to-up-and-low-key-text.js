@@ -13,6 +13,7 @@ const upperText = () => {
 const lowerText = () => {
   let buttons = keyboard.children;
   for (let button of buttons) {
+    button.classList.remove("active");
     button.firstChild.textContent = button.firstChild.textContent.toLowerCase();
     if (
       button.firstChild.textContent.length > 1 &&

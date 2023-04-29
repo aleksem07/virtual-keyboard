@@ -25,11 +25,13 @@
     content: "";
     position: absolute;
     left: 40%;
-    bottom: 5px;
+    bottom: 2.5px;
     width: 10px;
     height: 10px;
     border-radius: 50px 50px;
     background: rgb(70, 70, 70);
+    box-shadow: none;
+    transition: all 0.1s ease-in;
   }
 }
 
@@ -41,6 +43,7 @@
 }
 
 .add-led {
+  transition: all 0.1s ease-in;
   margin-bottom: 5px;
   padding: 10px;
   border-radius: 10px;
@@ -49,9 +52,15 @@
   text-align: center;
   cursor: pointer;
   color: $color-light;
+
   &:hover {
     background-color: tomato;
   }
+}
+
+.voice:hover,
+.sound:hover {
+  background-color: inherit;
 }
 
 .screen__cursor {
@@ -62,7 +71,7 @@
   resize: none;
   border-radius: 10px;
   background-color: $color-screen;
-  outline: none;
+  outline: 5px solid grey;
 }
 
 .screen__add-led {

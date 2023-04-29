@@ -5,7 +5,7 @@ const cleanLed = document.querySelector(".clean");
 let keyboard = document.querySelector(".keyboard");
 let buttons = keyboard.children;
 
-// display.focus();
+display.focus();
 
 let clickPrint = () => {
   let keyboard = document.querySelector(".keyboard");
@@ -19,15 +19,27 @@ let clickPrint = () => {
       let displayText = display.value;
 
       if (char.length < 2) {
+        displayText = "";
         displayText = displayText + char;
         char = buttonFirst.textContent;
-        display.value = displayText;
+        display.setRangeText(
+          `${displayText}`,
+          display.selectionStart,
+          display.selectionEnd,
+          "end"
+        );
       }
 
       const displayValue = (char) => {
+        displayText = "";
         char = char;
         displayText = displayText + char;
-        display.value = displayText;
+        display.setRangeText(
+          `${displayText}`,
+          display.selectionStart,
+          display.selectionEnd,
+          "end"
+        );
       };
 
       if (button.classList.contains("super-big")) {
@@ -53,6 +65,7 @@ let clickPrint = () => {
         button.classList.contains("active")
       ) {
         upperText();
+        console.log(button);
       } else if (
         button.dataset.code === "CapsLock" &&
         !button.classList.contains("active")
@@ -81,56 +94,54 @@ let clickPrint = () => {
 
 cleanLed.addEventListener("click", () => {
   display.value = "";
+  document.querySelector(".screen").classList.remove("action");
 });
 
 //print with keyb
 document.addEventListener("keydown", (evt) => {
-  let char = evt.key;
-  let displayText = display.value;
-
-  if (char.length < 2) {
-    displayText = displayText + char;
-    display.value = displayText;
-  }
-  //clean
-  if (char === "Escape") {
-    display.value = "";
-    cleanLed.style.background = "tomato";
-    cleanLed.style.boxShadow = "inset -1px -1px 5px 0 #3a3a3a";
-  }
-  if (evt.code === "Enter") {
-    char = "\n";
-    displayText = displayText + char;
-    display.value = displayText;
-  }
-
-  if (display.value.length > 0) {
-    document.querySelector(".screen").classList.add("action");
-  }
-  if (display.value.length < 1) {
-    document.querySelector(".screen").classList.remove("action");
-  }
-
-  //style press
-  for (let button of buttons) {
+  if (evt.key != "Tab") {
     display.focus();
-    if (
-      evt.code === button.dataset.code &&
-      button.dataset.code === "CapsLock"
-    ) {
-      button.classList.toggle("active");
+
+    let char = evt.key;
+    if (char === "Escape") {
+      display.value = "";
+      cleanLed.style.background = "tomato";
+      cleanLed.style.boxShadow = "inset -1px -1px 5px 0 #3a3a3a";
     }
-    if (evt.code == button.dataset.code && button.dataset.code != "CapsLock") {
-      button.classList.add("active");
+
+    if (display.value.length > 0) {
+      document.querySelector(".screen").classList.add("action");
     }
-    if (
-      evt.code === button.dataset.code &&
-      !button.classList.contains("active") &&
-      evt.code == "CapsLock"
-    ) {
-      lowerText();
-    } else if (evt.code == "CapsLock" && button.classList.contains("active")) {
-      upperText();
+    if (display.value.length < 1) {
+      document.querySelector(".screen").classList.remove("action");
+    }
+
+    // style press
+    for (let button of buttons) {
+      if (
+        evt.code === button.dataset.code &&
+        button.dataset.code === "CapsLock"
+      ) {
+        button.classList.toggle("active");
+      }
+      if (
+        evt.code == button.dataset.code &&
+        button.dataset.code != "CapsLock"
+      ) {
+        button.classList.add("active");
+      }
+      if (
+        evt.code === button.dataset.code &&
+        !button.classList.contains("active") &&
+        evt.code == "CapsLock"
+      ) {
+        lowerText();
+      } else if (
+        evt.code == "CapsLock" &&
+        button.classList.contains("active")
+      ) {
+        upperText();
+      }
     }
   }
 });
