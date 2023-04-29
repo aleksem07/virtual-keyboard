@@ -65,7 +65,6 @@ let clickPrint = () => {
         button.classList.contains("active")
       ) {
         upperText();
-        console.log(button);
       } else if (
         button.dataset.code === "CapsLock" &&
         !button.classList.contains("active")

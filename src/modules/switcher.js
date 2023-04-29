@@ -3,9 +3,16 @@ import { iconKeybSwitch } from "./icons.js";
 import { createElements } from "./blocks/main.js";
 import { clickPrint } from "./print.js";
 import { upperText, lowerText } from "./to-up-and-low-key-text.js";
-const keyboard = document.querySelector(".keyboard");
 
+const keyboard = document.querySelector(".keyboard");
 const langLed = document.querySelector(".screen__lang-led");
+const currentLang = document.querySelector(".small");
+
+if (currentLang.firstChild.textContent == "ё") {
+  langLed.textContent = "Ru";
+} else {
+  langLed.textContent = "En";
+}
 
 const switchLangLed = () => {
   if (langLed.textContent == "En") {
@@ -15,18 +22,21 @@ const switchLangLed = () => {
   }
 };
 clickPrint();
+
 const switchButtons = (evt) => {
-  switchLangLed(evt);
+  switchLangLed();
   if (langLed.textContent == "En") {
     keyboard.innerHTML = "";
     createElements.buttons(buttonsEn);
     clickPrint();
     iconKeybSwitch();
+    return localStorage.setItem("lang", JSON.stringify(buttonsEn));
   } else if (langLed.textContent == "Ru") {
     keyboard.innerHTML = "";
     createElements.buttons(buttonsRu);
     clickPrint();
     iconKeybSwitch();
+    return localStorage.setItem("lang", JSON.stringify(buttonsRu));
   }
 };
 

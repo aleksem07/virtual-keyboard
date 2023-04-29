@@ -1,5 +1,6 @@
-import { buttonsEn, buttonsRu } from "./../data/buttons-data.js";
+import { buttonsEn } from "../data/buttons-data.js";
 import { iconKeybSwitch } from "./../icons.js";
+let savedLang = JSON.parse(localStorage.getItem("lang"));
 
 const createElements = {
   tags: {
@@ -95,7 +96,11 @@ const createElements = {
 };
 
 createElements.init();
-createElements.buttons(buttonsEn);
+if (localStorage.length == 0) {
+  createElements.buttons(buttonsEn);
+} else {
+  createElements.buttons(savedLang);
+}
 createElements.elements.screen.focus();
 iconKeybSwitch();
 
