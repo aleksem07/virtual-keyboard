@@ -2,6 +2,7 @@ import { buttonsEn, buttonsRu } from "./data/buttons-data.js";
 import { iconKeybSwitch } from "./icons.js";
 import { createElements } from "./blocks/main.js";
 import { clickPrint } from "./print.js";
+import { upperText, lowerText } from "./to-up-and-low-key-text.js";
 const keyboard = document.querySelector(".keyboard");
 
 const langLed = document.querySelector(".screen__lang-led");
@@ -29,6 +30,27 @@ const switchButtons = (evt) => {
   }
 };
 
+const shift = () => {
+  document.addEventListener("keydown", (evt) => {
+    if (evt.key === "Shift") {
+      upperText();
+    }
+  });
+  document.addEventListener("keyup", (evt) => {
+    if (evt.key === "Shift") {
+      lowerText();
+    }
+  });
+};
+shift();
+
+const caps = () => {
+  document.addEventListener("keydown", (evt) => {
+    if (evt.code == "CapsLock") {
+    }
+  });
+};
+caps();
 //switch lang on keyboard
 const switchLangKey = (func, ...codes) => {
   let pressed = new Set();

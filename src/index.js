@@ -8,4 +8,5 @@ import "./modules/print.js";
 import "./modules/hide-keyb.js";
 import "./modules/icons.js";
 import "./modules/caps.js";
+import "./modules/to-up-and-low-key-text.js";
 import "./modules/blocks/footer.js";

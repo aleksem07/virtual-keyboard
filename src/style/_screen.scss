@@ -12,13 +12,31 @@
   border: 2px solid $color-dark;
   border-radius: 10px;
   position: relative;
-  background-color: $color-text;
+  background: $color-text;
   box-shadow: -7px -7px 17px -6px $color-screen--shadow,
     inset -5px -7px 20px -7px $color-screen--shadow-inset;
   color: $color-light;
 
   &__add-led {
     display: grid;
+  }
+
+  &::before {
+    content: "";
+    position: absolute;
+    left: 40%;
+    bottom: 5px;
+    width: 10px;
+    height: 10px;
+    border-radius: 50px 50px;
+    background: rgb(70, 70, 70);
+  }
+}
+
+.action {
+  &::before {
+    background: tomato;
+    box-shadow: 0 0 15px 2px rgb(255, 81, 81), 0 0 20px 1px rgb(253, 135, 135);
   }
 }
 
@@ -47,6 +65,24 @@
   outline: none;
 }
 
+.screen__add-led {
+  position: relative;
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 5px;
+    right: 5%;
+    width: 20px;
+    height: 10px;
+    border-radius: 500px 50px;
+    background: rgba(150, 150, 150, 0.1);
+    box-shadow: inset -1px 0 2px 0 rgba(255, 255, 255, 0.2),
+      0 15px 2px 0 rgba(255, 255, 255, 0.2),
+      0 30px 2px 0 rgba(255, 255, 255, 0.2);
+  }
+}
+
 .screen__lang-led {
   padding: 15px;
   min-width: 55px;
@@ -68,7 +104,7 @@
 }
 
 .active {
-  background-color: rgb(212, 97, 76);
+  background-color: $color-back;
   color: white;
 }
 

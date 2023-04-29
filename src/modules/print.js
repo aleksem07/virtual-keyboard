@@ -1,8 +1,11 @@
+import { upperText, lowerText } from "./to-up-and-low-key-text";
+
 const display = document.querySelector(".screen__cursor");
 const cleanLed = document.querySelector(".clean");
 let keyboard = document.querySelector(".keyboard");
 let buttons = keyboard.children;
-display.focus();
+
+// display.focus();
 
 let clickPrint = () => {
   let keyboard = document.querySelector(".keyboard");
@@ -21,17 +24,58 @@ let clickPrint = () => {
         display.value = displayText;
       }
 
-      if (button.classList.contains("super-big")) {
-        char = " ";
+      const displayValue = (char) => {
+        char = char;
         displayText = displayText + char;
         display.value = displayText;
+      };
+
+      if (button.classList.contains("super-big")) {
+        displayValue(" ");
       }
       if (button.dataset.code === "Enter") {
-        char = "\n";
-        displayText = displayText + char;
-        display.value = displayText;
+        displayValue("\n");
       }
+      if (button.dataset.code === "Backspace") {
+        display.value = display.value.substring(0, display.value.length - 1);
+      }
+      if (display.value.length > 0) {
+        document.querySelector(".screen").classList.add("action");
+      }
+      if (display.value.length < 1) {
+        document.querySelector(".screen").classList.remove("action");
+      }
+      if (button.dataset.code === "CapsLock") {
+        button.classList.toggle("active");
+      }
+      if (
+        button.dataset.code === "CapsLock" &&
+        button.classList.contains("active")
+      ) {
+        upperText();
+      } else if (
+        button.dataset.code === "CapsLock" &&
+        !button.classList.contains("active")
+      )
+        lowerText();
     };
+
+    button.addEventListener("mousedown", () => {
+      if (
+        button.dataset.code === "ShiftLeft" ||
+        button.dataset.code === "ShiftRight"
+      ) {
+        upperText();
+      }
+    });
+    button.addEventListener("mouseup", () => {
+      if (
+        button.dataset.code === "ShiftLeft" ||
+        button.dataset.code === "ShiftRight"
+      ) {
+        lowerText();
+      }
+    });
   }
 };
 
@@ -59,21 +103,42 @@ document.addEventListener("keydown", (evt) => {
     displayText = displayText + char;
     display.value = displayText;
   }
-  //style press
 
+  if (display.value.length > 0) {
+    document.querySelector(".screen").classList.add("action");
+  }
+  if (display.value.length < 1) {
+    document.querySelector(".screen").classList.remove("action");
+  }
+
+  //style press
   for (let button of buttons) {
-    if (evt.code == button.dataset.code) {
-      button.style.background = "tomato";
-      button.style.boxShadow = "inset -1px -1px 5px 0 #3a3a3a";
+    display.focus();
+    if (
+      evt.code === button.dataset.code &&
+      button.dataset.code === "CapsLock"
+    ) {
+      button.classList.toggle("active");
+    }
+    if (evt.code == button.dataset.code && button.dataset.code != "CapsLock") {
+      button.classList.add("active");
+    }
+    if (
+      evt.code === button.dataset.code &&
+      !button.classList.contains("active") &&
+      evt.code == "CapsLock"
+    ) {
+      lowerText();
+    } else if (evt.code == "CapsLock" && button.classList.contains("active")) {
+      upperText();
     }
   }
 });
 
 document.addEventListener("keyup", (evt) => {
   for (let button of buttons) {
-    if (evt.code == button.dataset.code) {
-      button.style.background = "#3a3a3a";
-      button.style.boxShadow = "-2px -2px 4px 0 #3a3a3a";
+    if (evt.code == button.dataset.code && button.dataset.code != "CapsLock") {
+      button.classList.remove("active");
     }
     if (evt.key === "Escape") {
       display.textContent = "";
