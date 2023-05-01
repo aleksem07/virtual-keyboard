@@ -1,0 +1,24 @@
+.keyboard {
+  margin: 0 auto;
+  padding: 10px;
+  height: 200px;
+  top: 0;
+  display: grid;
+  grid-template-columns: repeat(15, 1fr);
+  grid-template-rows: repeat(5, 1fr);
+  gap: 5px;
+  border: 2px solid $color-dark;
+  border-radius: 10px;
+  position: relative;
+  background: linear-gradient(
+    to right bottom,
+    $color-keyboard--first,
+    $color-keyboard--second
+  );
+  box-shadow: -5px -7px 30px 0px $color-screen,
+    inset -5px -7px 20px -7px $color-screen--shadow-inset;
+
+  color: $color-light;
+  overflow: hidden;
+  transition: all 0.25s ease-in;
+}

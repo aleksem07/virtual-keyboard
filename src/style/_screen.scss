@@ -1,0 +1,123 @@
+.screen {
+  position: relative;
+  margin: 0 auto 60px;
+  padding: 20px;
+  display: flex;
+  gap: 2%;
+  overflow: auto;
+  word-wrap: break-word;
+  min-width: 300px;
+  max-width: 80%;
+  min-height: 251px;
+  border: 2px solid $color-dark;
+  border-radius: 10px;
+  position: relative;
+  background: $color-text;
+  box-shadow: -7px -7px 17px -6px $color-screen--shadow,
+    inset -5px -7px 20px -7px $color-screen--shadow-inset;
+  color: $color-light;
+
+  &__add-led {
+    display: grid;
+  }
+
+  &::before {
+    content: "";
+    position: absolute;
+    left: 40%;
+    bottom: 2.5px;
+    width: 10px;
+    height: 10px;
+    border-radius: 50px 50px;
+    background: rgb(70, 70, 70);
+    box-shadow: none;
+    transition: all 0.1s ease-in;
+  }
+}
+
+.action {
+  &::before {
+    background: tomato;
+    box-shadow: 0 0 15px 2px rgb(255, 81, 81), 0 0 20px 1px rgb(253, 135, 135);
+  }
+}
+
+.add-led {
+  transition: all 0.1s ease-in;
+  margin-bottom: 5px;
+  padding: 10px;
+  border-radius: 10px;
+  background-color: $color-screen;
+  border: 2px solid $color-dark;
+  text-align: center;
+  cursor: pointer;
+  color: $color-light;
+
+  &:hover {
+    background-color: tomato;
+  }
+}
+
+.voice:hover,
+.sound:hover {
+  background-color: inherit;
+}
+
+.screen__cursor {
+  padding: 10px;
+  width: 90%;
+  color: $color-light;
+  min-height: 170px;
+  resize: none;
+  border-radius: 10px;
+  background-color: $color-screen;
+  outline: 5px solid grey;
+}
+
+.screen__add-led {
+  position: relative;
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 5px;
+    right: 5%;
+    width: 20px;
+    height: 10px;
+    border-radius: 500px 50px;
+    background: rgba(150, 150, 150, 0.1);
+    box-shadow: inset -1px 0 2px 0 rgba(255, 255, 255, 0.2),
+      0 15px 2px 0 rgba(255, 255, 255, 0.2),
+      0 30px 2px 0 rgba(255, 255, 255, 0.2);
+  }
+}
+
+.screen__lang-led {
+  padding: 15px;
+  min-width: 55px;
+  max-height: 55px;
+  width: max-content;
+  background-color: $color-back;
+  text-align: left;
+  font-weight: 600;
+}
+
+.clean {
+  padding: 10px;
+  grid-template-rows: 1fr;
+  background-color: $color-keyboard-button;
+}
+
+.off {
+  color: grey;
+}
+
+.active {
+  background-color: $color-back;
+  color: white;
+}
+
+.voice,
+.sound {
+  cursor: not-allowed;
+}

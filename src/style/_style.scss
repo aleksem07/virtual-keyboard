@@ -1,0 +1,36 @@
+html {
+  font-size: 10px;
+}
+
+a {
+  text-decoration: none;
+  color: $color-text;
+}
+
+p {
+  margin: 0;
+  padding: 0;
+}
+
+li {
+  list-style: none;
+}
+
+.page__body {
+  padding-inline: 1%;
+  max-width: $width-desktop;
+  margin: 0 auto;
+  display: grid;
+  grid-template-rows: max-content 1fr max-content;
+  height: 100vh;
+  font-family: "Montserrat";
+  background-color: $color-back;
+  color: $color-text;
+  font-size: 1.6rem;
+}
+
+.main {
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+}
