@@ -1,16 +1,12 @@
 import "./index.html";
 import "./index.scss";
 
-import "./modules/blocks/header.js";
-import "./modules/switcher.js";
-import "./modules/blocks/main.js";
-import "./modules/print.js";
-import "./modules/hide-keyb.js";
-import "./modules/icons.js";
-import "./modules/caps.js";
-import "./modules/to-up-and-low-key-text.js";
-import "./modules/blocks/footer.js";
-
-console.log(`Привет! Все пункты выполнены в полном объеме!
-110/110
-Удачи в дальнейшем обучении!!!`);
+import "./modules/blocks/header";
+import "./modules/switcher";
+import "./modules/blocks/main";
+import "./modules/print";
+import "./modules/hide-keyb";
+import "./modules/icons";
+import "./modules/caps";
+import "./modules/to-up-and-low-key-text";
+import "./modules/blocks/footer";

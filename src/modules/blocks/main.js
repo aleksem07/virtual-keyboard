@@ -1,6 +1,7 @@
-import { buttonsEn } from "../data/buttons-data.js";
-import { iconKeybSwitch } from "./../icons.js";
-let savedLang = JSON.parse(localStorage.getItem("lang"));
+import { buttonsEn } from "../data/buttons-data";
+import { iconKeybSwitch } from "../icons";
+
+const savedLang = JSON.parse(localStorage.getItem("lang"));
 
 const createElements = {
   tags: {
@@ -29,7 +30,7 @@ const createElements = {
   },
 
   init() {
-    //create elements
+    // create elements
     this.elements.main = document.createElement("main");
     this.elements.screen = this.tags.div.cloneNode(true);
     this.elements.cursor = this.tags.textarea.cloneNode(true);
@@ -40,7 +41,7 @@ const createElements = {
     this.elements.voiceKey = this.tags.button.cloneNode(true);
     this.elements.keyboardHideKey = this.tags.button.cloneNode(true);
     this.elements.keyboard = this.tags.ul.cloneNode(true);
-    //add classes
+    // add classes
     this.elements.main.classList.add("main");
     this.elements.screen.classList.add("screen");
     this.elements.cursor.classList.add("screen__cursor");
@@ -51,16 +52,16 @@ const createElements = {
     this.elements.voiceKey.className = "add-led voice off";
     this.elements.keyboardHideKey.className = "add-led keyb off";
     this.elements.keyboard.classList.add("keyboard");
-    //add textContent
+    // add textContent
     this.elements.currentLanguageLed.textContent = "En";
     this.elements.cleanKey.textContent = "cleaner(ESC)";
     this.elements.soundKey.textContent = "sound Off";
     this.elements.voiceKey.textContent = "voice Off";
     this.elements.keyboardHideKey.textContent = "hide keyb Off";
-    //disabled
+    // disabled
     this.elements.soundKey.disabled = "true";
     this.elements.voiceKey.disabled = "true";
-    //add to DOM
+    // add to DOM
     this.elements.body.appendChild(this.elements.main);
     this.elements.main.appendChild(this.elements.screen);
     this.elements.screen.appendChild(this.elements.cursor);
@@ -73,21 +74,21 @@ const createElements = {
     this.elements.main.appendChild(this.elements.keyboard);
   },
   buttons(buttonsData) {
-    for (let button of buttonsData) {
-      //create el
+    for (const button of buttonsData) {
+      // create el
       this.elements.buttonItem = this.tags.li.cloneNode(true);
       this.elements.buttonName = this.tags.span.cloneNode(true);
       this.elements.buttonAdd = this.tags.span.cloneNode(true);
-      //add textContent
+      // add textContent
       this.elements.buttonName.textContent = button.key;
       this.elements.buttonAdd.textContent = button.add;
-      //add classes
+      // add classes
       this.elements.buttonItem.className = `button ${button.size}`;
       this.elements.buttonName.classList.add("button-first");
       this.elements.buttonAdd.classList.add("button-second");
-      //add data
+      // add data
       this.elements.buttonItem.dataset.code = `${button.id}`;
-      //add to DOM
+      // add to DOM
       this.elements.keyboard.appendChild(this.elements.buttonItem);
       this.elements.buttonItem.appendChild(this.elements.buttonName);
       this.elements.buttonItem.appendChild(this.elements.buttonAdd);

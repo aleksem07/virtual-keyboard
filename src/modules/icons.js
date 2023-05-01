@@ -1,7 +1,7 @@
 const iconKeybSwitch = () => {
   const keyboard = document.querySelector(".keyboard");
-  let buttons = keyboard.children;
-  for (let el of buttons) {
+  const buttons = keyboard.children;
+  for (const el of buttons) {
     if (el.dataset.code === "Backspace") {
       el.className = "button big material-icons";
       el.firstChild.textContent = "backspace";

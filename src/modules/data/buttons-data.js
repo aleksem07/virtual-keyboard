@@ -401,7 +401,7 @@ export const buttonsRu = [
   {
     id: "Digit2",
     key: "2",
-    add: `"`,
+    add: "\"",
     size: "small",
   },
   {

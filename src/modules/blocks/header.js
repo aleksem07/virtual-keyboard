@@ -9,8 +9,8 @@ h1.textContent = "Virtual keyboard";
 
 const projectDesc = document.createElement("p");
 projectDesc.className = "header__desc";
-projectDesc.innerText =
-  "Клавиатура создана в ОС Линукс \n Переключение раскладки сочетанием ShiftLeft + ControlLeft";
+projectDesc.innerText = `Клавиатура создана в ОС Линукс
+  \n Переключение раскладки сочетанием ShiftLeft + ControlLeft`;
 
 const createHeader = () => {
   body.appendChild(header);
